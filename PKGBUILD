@@ -1,5 +1,5 @@
 # Maintainer: Kimiblock Moe
-
+_name="Minecraft-Model-Reader"
 pkgname=python-minecraft-model-reader
 pkgdesc="Minecraft-Model-Reader for Amulet-Core"
 license=(custom)
@@ -10,10 +10,10 @@ url="https://github.com/gentlegiantJGC/Minecraft-Model-Reader"
 makedepends=(python-build python-installer python-wheel)
 depends=(python)
 source=(
-	"model-reader-${pkgver}"::"https://github.com/gentlegiantJGC/Minecraft-Model-Reader/archive/refs/tags/${pkgver}.tar.gz"
+	"${pkgname}-${pkgver}"::"https://github.com/gentlegiantJGC/${_name}/archive/refs/tags/${pkgver}.tar.gz"
 )
 md5sums=(
-	"SKIP"
+	"75c9e8ca8925cc154b5f5d3c22169b67"
 )
 
 function prepare() {
@@ -21,12 +21,12 @@ function prepare() {
 }
 
 function build() {
-	cd "${srcdir}/Minecraft-Model-Reader-${pkgver}"
+	cd "${srcdir}/${_name}-${pkgver}"
 	python -m build --wheel --no-isolation
 }
 
 function package() {
-	cd "${srcdir}/Minecraft-Model-Reader-${pkgver}"
+	cd "${srcdir}/${_name}-${pkgver}"
 	python -m installer --destdir="${pkgdir}" dist/*.whl
 }
 
